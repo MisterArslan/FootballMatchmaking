@@ -1,0 +1,5 @@
+C:\work\ServerFootball\FootballServer\FootballServer\bin\Debug\Newtonsoft.Json.dll
+C:\work\ServerFootball\FootballServer\FootballServer\bin\Debug\matchmaking.dll
+C:\work\ServerFootball\FootballServer\FootballServer\bin\Debug\FootballServer.exe
+C:\work\ServerFootball\FootballServer\FootballServer\obj\Debug\FootballServer.exe
+C:\work\ServerFootball\FootballServer\FootballServer\bin\Debug\FootballServer.exe.config

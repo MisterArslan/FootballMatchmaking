@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballServer", "FootballServer.csproj", "{0219CECA-3183-4832-BCD2-B0CBB69DE708}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "matchmaking", "..\..\MatchmakingServer\matchmaking.csproj", "{6D6465EA-8BAA-440B-8007-6F0D87C5DDD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0219CECA-3183-4832-BCD2-B0CBB69DE708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0219CECA-3183-4832-BCD2-B0CBB69DE708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0219CECA-3183-4832-BCD2-B0CBB69DE708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0219CECA-3183-4832-BCD2-B0CBB69DE708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6465EA-8BAA-440B-8007-6F0D87C5DDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6465EA-8BAA-440B-8007-6F0D87C5DDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6465EA-8BAA-440B-8007-6F0D87C5DDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6465EA-8BAA-440B-8007-6F0D87C5DDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
