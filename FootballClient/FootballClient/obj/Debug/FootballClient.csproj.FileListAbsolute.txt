@@ -1,0 +1,9 @@
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\bin\Debug\FootballClient.exe.config
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\bin\Debug\FootballClient.exe
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\bin\Debug\FootballClient.pdb
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\obj\Debug\FootballClient.csproj.CoreCompileInputs.cache
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\obj\Debug\FootballClient.csproj.CopyComplete
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\obj\Debug\FootballClient.exe
+C:\Users\Lionheart\Desktop\FootballClient\FootballClient\FootballClient\obj\Debug\FootballClient.pdb
