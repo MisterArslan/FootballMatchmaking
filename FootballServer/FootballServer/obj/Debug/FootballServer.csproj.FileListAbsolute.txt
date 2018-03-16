@@ -16,3 +16,15 @@ C:\Users\Lionheart\Source\Repos\ServerFootball\ServerFootball\FootballServer\Foo
 C:\Users\Lionheart\Source\Repos\ServerFootball\ServerFootball\FootballServer\FootballServer\obj\Debug\FootballServer.csproj.CoreCompileInputs.cache
 C:\Users\Lionheart\Source\Repos\ServerFootball\ServerFootball\FootballServer\FootballServer\obj\Debug\FootballServer.exe
 C:\Users\Lionheart\Source\Repos\ServerFootball\ServerFootball\FootballServer\FootballServer\obj\Debug\FootballServer.pdb
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\bin\Debug\FootballServer.exe.config
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\bin\Debug\FootballServer.exe
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\bin\Debug\FootballServer.pdb
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\bin\Debug\log4net.dll
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\bin\Debug\log4net.xml
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\obj\Debug\FootballServer.csprojResolveAssemblyReference.cache
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\obj\Debug\FootballServer.csproj.CoreCompileInputs.cache
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\obj\Debug\FootballServer.csproj.CopyComplete
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\obj\Debug\FootballServer.exe
+C:\Users\Lionheart\Documents\GitHub\FootballMatchmaking\FootballServer\FootballServer\obj\Debug\FootballServer.pdb
