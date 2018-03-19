@@ -10,10 +10,11 @@ namespace FootballClient
     {
         private readonly Player _player;
 
+        public delegate void Action();
         public Action<string> OnInviteRecieved;
         public Action<string> OnInviteAccepted;
-        public Action<string> OnInviteDeclined;
-        public Action<string> OnInviteCanceled;
+        public Action OnInviteDeclined;
+        public Action OnInviteCanceled;
         public Action<string> OnInviteError;
 
         public MMClient(string token) : base()
@@ -36,14 +37,14 @@ namespace FootballClient
             AddHandler((int)MessageType.DECLINE_INVITE,
                 (msg) => 
                 {
-                    var result = msg.ToObject<ValueResult<string>>();
-                    OnInviteDeclined(result.Value);
+                    var result = msg.ToObject<Result>();
+                    OnInviteDeclined();
                 });
             AddHandler((int)MessageType.CANCEL_INVITE,
                 (msg) =>
                 {
-                    var result = msg.ToObject<ValueResult<string>>();
-                    OnInviteCanceled(result.Value);
+                    var result = msg.ToObject<Result>();
+                    OnInviteCanceled();
                 });
             AddHandler((int)MessageType.ERROR,
                 (msg) =>

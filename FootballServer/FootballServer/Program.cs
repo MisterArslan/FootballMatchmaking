@@ -40,7 +40,7 @@ namespace FootballServer
                             server.Send(new ValueResult<string>
                                 ((int)MessageType.CREATE_INVITE, receiver, invite.Token));
                             Log.Info("[Server] Invite from " +
-                            player.Token + " to " + request.Value + "created");
+                            player.Token + " to " + request.Value + " created");
                         }
                         else
                         {
@@ -71,7 +71,7 @@ namespace FootballServer
                                 ((int)MessageType.ACCEPT_INVITE, invite.Sender, token));
                             _invites.TryRemove(request.Value, out invite);
                             Log.Info("[Server] Invite from " +
-                                player.Token + " to " + request.Value + "accepted");
+                                player.Token + " to " + request.Value + " accepted");
                         }
                         else
                         {
@@ -95,11 +95,10 @@ namespace FootballServer
                         if (_invites.ContainsKey(request.Value))
                         {
                             var invite = _invites[request.Value];
-                            server.Send(new ValueResult<string>
-                                ((int)MessageType.DECLINE_INVITE, invite.Sender, invite.Token));
+                            server.Send(new Result((int)MessageType.DECLINE_INVITE, invite.Sender));
                             _invites.TryRemove(request.Value, out invite);
                             Log.Info("[Server] Invite from " +
-                                player.Token + " to " + request.Value + "declined");
+                                player.Token + " to " + request.Value + " declined");
                         }
                         else
                         {
@@ -123,13 +122,9 @@ namespace FootballServer
                         if (_invites.ContainsKey(request.Value))
                         {
                             var invite = _invites[request.Value];
-                            server.Send(new ValueResult<string>
-                                ((int)MessageType.CANCEL_INVITE, invite.Sender, invite.Token));
-                            server.Send(new ValueResult<string>
-                                ((int)MessageType.CANCEL_INVITE, invite.Receiver, invite.Token));
-                            _invites.TryRemove(request.Value, out invite);
+                            CancelInvite(ref server, invite);
                             Log.Info("[Server] Invite from " +
-                                player.Token + " to " + request.Value + "canceled");
+                                player.Token + " to " + request.Value + " canceled");
                         }
                         else
                         {
@@ -155,15 +150,9 @@ namespace FootballServer
                         {
                             var invite = _invites.First(x => x.Value.Receiver.Token == player.Token
                                 || x.Value.Sender.Token == player.Token).Value;
-                            if (IsConnected(invite.Receiver.Client))
-                                server.Send(new ValueResult<string>
-                                    ((int)MessageType.CANCEL_INVITE, invite.Receiver, invite.Token));
-                            if (IsConnected(invite.Sender.Client))
-                                server.Send(new ValueResult<string>
-                                    ((int)MessageType.CANCEL_INVITE, invite.Sender, invite.Token));
-                            _invites.TryRemove(invite.Token, out invite);
-                            Log.Info("[Server] Invite from " + invite.Sender.Token + 
-                                " to " + invite.Receiver.Token + "deleted");
+                            CancelInvite(ref server, invite);
+                            Log.Info("[Server] Invite from " + invite.Sender.Token +
+                                " to " + invite.Receiver.Token + " deleted");
                         }
                         else
                         {
@@ -179,6 +168,7 @@ namespace FootballServer
                 }));
 
             Log.Info("[Server] Started");
+            //Handling connections
             Task.Run(() => 
             {
                 while (true)
@@ -187,7 +177,41 @@ namespace FootballServer
                     System.Threading.Thread.Sleep(100);
                 }             
             });
+            //Refreshing invite list
+            Task.Run(() => 
+            {
+                while (true)
+                {
+                    foreach (var invite in _invites.Values)
+                    {
+                        if (DateTime.Now - invite.CreateTime 
+                            >= TimeSpan.FromSeconds(60))
+                        {
+                            try
+                            {
+                                CancelInvite(ref server, invite);
+                                Log.Info("[Server] Invite from " + invite.Sender.Token +
+                                    " to " + invite.Receiver.Token + " deleted");
+                            }
+                            catch (Exception ex)
+                            {
+                                Log.Error(ex);
+                            }
+                        }
+                    }
+                    System.Threading.Thread.Sleep(1000);
+                }
+            });
             server.StartListener().Wait();
+        }
+
+        private static void CancelInvite(ref Server<Player> server, Invite invite)
+        {
+            if (IsConnected(invite.Receiver.Client))
+                server.Send(new Result((int)MessageType.CANCEL_INVITE, invite.Receiver));
+            if (IsConnected(invite.Sender.Client))
+                server.Send(new Result((int)MessageType.CANCEL_INVITE, invite.Sender));
+            _invites.TryRemove(invite.Token, out Invite inv);
         }
 
         private static bool IsConnected(TcpClient _tcpClient)
