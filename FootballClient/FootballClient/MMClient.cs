@@ -87,9 +87,10 @@ namespace FootballClient
                 ((int)MessageType.DECLINE_INVITE, _player, inviteToken));
         }
 
-        public void CancelInvite()
+        public void CancelInvite(string inviteToken)
         {
-            Send(new Request((int)MessageType.CANCEL_INVITE, _player));
+            Send(new ValueRequest<string>
+                ((int)MessageType.CANCEL_INVITE, _player, inviteToken));
         }
 
         public void Disconnect()

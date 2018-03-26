@@ -31,7 +31,7 @@
                         client.DeclineInvite(inviteToken);
                         break;
                     case "can":
-                        client.CancelInvite();
+                        client.CancelInvite(inviteToken);
                         break;
                     default:
                         client.Tick();
