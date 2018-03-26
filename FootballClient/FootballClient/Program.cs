@@ -31,7 +31,7 @@
                         client.DeclineInvite(inviteToken);
                         break;
                     case "can":
-                        client.CancelInvite(inviteToken);
+                        client.CancelInvite();
                         break;
                     default:
                         client.Tick();
@@ -40,7 +40,7 @@
             }
         }
 
-        private static void Recieve(FootballServer.Models.Invite s)
+        private static void Recieve(FootballClient.Models.Invite s)
         {
             inviteToken = s.Token;
             System.Console.WriteLine(s.Token);

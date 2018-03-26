@@ -1,6 +1,6 @@
 ﻿using FootballClient.Models;
 
-namespace FootballServer.Models
+namespace FootballClient.Models
 {
     public class Invite
     {

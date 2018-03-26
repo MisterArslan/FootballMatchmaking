@@ -23,6 +23,11 @@ namespace FootballServer
             var server = new Server<Player>(26000);
             XmlConfigurator.Configure();
 
+            server.AddHandler((int)MessageType.CONNECT,
+                (player, msg, client) => Task.Run(() =>
+                {
+                   //For getting info about client
+                }));
             server.AddHandler((int)MessageType.CREATE_INVITE,
                 (player, msg, client) => Task.Run(() =>
                 {
@@ -30,13 +35,15 @@ namespace FootballServer
                     player.Token = request.Player.Token;
                     try
                     {
-                        if (server.Players.Any(x => x.Token == request.Value))
+                        if (server.Players.Any(x =>  x != null && x.Token == request.Value))
                         {
                             var receiver = (from member in server.Players
                                             where member.Token == request.Value
                                             select member).First();
                             var invite = new Invite(player, receiver);
                             _invites.TryAdd(invite.Token, invite);
+                            server.Send(new ValueResult<Invite>
+                                ((int)MessageType.CREATE_INVITE, player, invite));
                             server.Send(new ValueResult<Invite>
                                 ((int)MessageType.CREATE_INVITE, receiver, invite));
                             Log.Info("[Server] Invite from " +

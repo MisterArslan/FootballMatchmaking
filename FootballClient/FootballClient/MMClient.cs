@@ -2,8 +2,8 @@
 using FootballClient.Models;
 using FootballClient.Models.Requests;
 using FootballClient.Models.Results;
-using FootballServer.Models;
 using System;
+using System.Net;
 
 namespace FootballClient
 {
@@ -12,6 +12,7 @@ namespace FootballClient
         private readonly Player _player;
 
         public delegate void Action();
+        public Action<Invite> OnInviteCreated;
         public Action<Invite> OnInviteRecieved;
         public Action<string> OnInviteAccepted;
         public Action OnInviteDeclined;
@@ -26,8 +27,15 @@ namespace FootballClient
                 (msg) => 
                 {
                     var result = msg.ToObject<ValueResult<Invite>>();
-                    OnInviteRecieved(result.Value);
+                    OnInviteCreated(result.Value);
                     
+                });
+            AddHandler((int)MessageType.RECEIVE_INVITE,
+                (msg) =>
+                {
+                    var result = msg.ToObject<ValueResult<Invite>>();
+                    OnInviteRecieved(result.Value);
+
                 });
             AddHandler((int)MessageType.ACCEPT_INVITE,
                 (msg) => 
@@ -55,6 +63,12 @@ namespace FootballClient
                 });
         }
 
+        public override void Connect(IPAddress ip, int port)
+        {
+            base.Connect(ip, port);
+            Send(new Request((int)MessageType.CONNECT, _player));
+        }
+
         public void CreateInvite(string receiverToken)
         {
             Send(new ValueRequest<string>
@@ -73,10 +87,9 @@ namespace FootballClient
                 ((int)MessageType.DECLINE_INVITE, _player, inviteToken));
         }
 
-        public void CancelInvite(string inviteToken)
+        public void CancelInvite()
         {
-            Send(new ValueRequest<string>
-                ((int)MessageType.CANCEL_INVITE, _player, inviteToken));
+            Send(new Request((int)MessageType.CANCEL_INVITE, _player));
         }
 
         public void Disconnect()
