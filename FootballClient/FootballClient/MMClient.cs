@@ -2,6 +2,7 @@
 using FootballClient.Models;
 using FootballClient.Models.Requests;
 using FootballClient.Models.Results;
+using FootballServer.Models;
 using System;
 
 namespace FootballClient
@@ -11,7 +12,7 @@ namespace FootballClient
         private readonly Player _player;
 
         public delegate void Action();
-        public Action<string> OnInviteRecieved;
+        public Action<Invite> OnInviteRecieved;
         public Action<string> OnInviteAccepted;
         public Action OnInviteDeclined;
         public Action OnInviteCanceled;
@@ -24,7 +25,7 @@ namespace FootballClient
             AddHandler((int)MessageType.CREATE_INVITE,
                 (msg) => 
                 {
-                    var result = msg.ToObject<ValueResult<string>>();
+                    var result = msg.ToObject<ValueResult<Invite>>();
                     OnInviteRecieved(result.Value);
                     
                 });

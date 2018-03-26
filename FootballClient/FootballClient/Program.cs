@@ -40,10 +40,10 @@
             }
         }
 
-        private static void Recieve(string s)
+        private static void Recieve(FootballServer.Models.Invite s)
         {
-            inviteToken = s;
-            System.Console.WriteLine(s);
+            inviteToken = s.Token;
+            System.Console.WriteLine(s.Token);
         }
     }
 }

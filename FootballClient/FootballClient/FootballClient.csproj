@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Models\Invite.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="MMClient.cs" />
     <Compile Include="Models\Requests\Request.cs" />
