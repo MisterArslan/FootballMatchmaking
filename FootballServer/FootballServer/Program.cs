@@ -35,7 +35,7 @@ namespace FootballServer
                     player.Token = request.Player.Token;
                     try
                     {
-                        if (server.Players.Any(x =>  x != null && x.Token == request.Value))
+                        if (server.Players.Any(x => x.Token == request.Value))
                         {
                             var receiver = (from member in server.Players
                                             where member.Token == request.Value
@@ -82,9 +82,9 @@ namespace FootballServer
                         }
                         else
                         {
-                            Log.Error("Invite doesn't exist");
+                            Log.Error("Invite on accept doesn't exist");
                             server.Send(new ValueResult<string>
-                                ((int)MessageType.ERROR, player, "Invite doesn't exist"));
+                                ((int)MessageType.ERROR, player, "Invite on accept doesn't exist"));
                         }
                     }
                     catch (Exception ex)
@@ -109,9 +109,9 @@ namespace FootballServer
                         }
                         else
                         {
-                            Log.Error("Invite doesn't exist");
+                            Log.Error("Invite on decline doesn't exist");
                             server.Send(new ValueResult<string>
-                                ((int)MessageType.ERROR, player, "Invite doesn't exist"));
+                                ((int)MessageType.ERROR, player, "Invite on decline doesn't exist"));
                         }
                     }
                     catch (Exception ex)
@@ -135,9 +135,9 @@ namespace FootballServer
                         }
                         else
                         {
-                            Log.Error("Invite doesn't exist");
+                            Log.Error("Invite on cancel doesn't exist");
                             server.Send(new ValueResult<string>
-                                ((int)MessageType.ERROR, player, "Invite doesn't exist"));
+                                ((int)MessageType.ERROR, player, "Invite on cancel doesn't exist"));
                         }
                     }
                     catch (Exception ex)
@@ -163,9 +163,9 @@ namespace FootballServer
                         }
                         else
                         {
-                            Log.Error("Invite doesn't exist");
+                            Log.Error("Invite already deleted");
                             server.Send(new ValueResult<string>
-                                ((int)MessageType.ERROR, player, "Invite doesn't exist"));
+                                ((int)MessageType.ERROR, player, "Invite already deleted"));
                         }
                     }
                     catch (Exception ex)
