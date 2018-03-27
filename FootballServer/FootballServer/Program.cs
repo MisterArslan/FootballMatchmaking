@@ -82,7 +82,7 @@ namespace FootballServer
                         }
                         else
                         {
-                            Log.Error("Invite on accept doesn't exist");
+                            Log.Error(string.Concat("Invite ", request.Value, " on accept doesn't exist"));
                             server.Send(new ValueResult<string>
                                 ((int)MessageType.ERROR, player, "Invite on accept doesn't exist"));
                         }
@@ -109,7 +109,7 @@ namespace FootballServer
                         }
                         else
                         {
-                            Log.Error("Invite on decline doesn't exist");
+                            Log.Error(string.Concat("Invite ", request.Value," on decline doesn't exist"));
                             server.Send(new ValueResult<string>
                                 ((int)MessageType.ERROR, player, "Invite on decline doesn't exist"));
                         }
@@ -135,7 +135,7 @@ namespace FootballServer
                         }
                         else
                         {
-                            Log.Error("Invite on cancel doesn't exist");
+                            Log.Error(string.Concat("Invite ", request.Value, " on cancel doesn't exist"));
                             server.Send(new ValueResult<string>
                                 ((int)MessageType.ERROR, player, "Invite on cancel doesn't exist"));
                         }
@@ -160,12 +160,6 @@ namespace FootballServer
                             CancelInvite(ref server, invite);
                             Log.Info("[Server] Invite from " + invite.Sender.Token +
                                 " to " + invite.Receiver.Token + " deleted");
-                        }
-                        else
-                        {
-                            Log.Error("Invite already deleted");
-                            server.Send(new ValueResult<string>
-                                ((int)MessageType.ERROR, player, "Invite already deleted"));
                         }
                     }
                     catch (Exception ex)
