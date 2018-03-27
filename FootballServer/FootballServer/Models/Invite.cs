@@ -7,9 +7,9 @@
         public readonly Player Receiver;
         public readonly System.DateTime CreateTime;
 
-        public Invite(Player sender, Player receiver)
+        public Invite(string token, Player sender, Player receiver)
         {
-            Token = Models.Token.Generate();
+            Token = token;
             Sender = sender;
             Receiver = receiver;
             CreateTime = System.DateTime.Now;

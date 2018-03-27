@@ -45,7 +45,8 @@ namespace FootballClient
                     while (!string.IsNullOrEmpty(fullMsg))
                     {
                         var msg = ReadOneJson(ref fullMsg);
-                        var msgObj = JObject.FromObject(JsonConvert.DeserializeObject(msg));
+                        var obj = JsonConvert.DeserializeObject(msg);
+                        var msgObj = JObject.FromObject(obj);
                         var m = msgObj.ToObject<Message>();
                         _handlers[m.Id].Invoke(msgObj);
                     }
@@ -54,9 +55,9 @@ namespace FootballClient
                 return true;
                 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                DebugLog.Invoke(e.ToString());
+                Console.WriteLine(ex);
                 return false;
             }
         }

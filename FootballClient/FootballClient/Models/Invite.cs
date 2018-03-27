@@ -1,6 +1,4 @@
-﻿using FootballClient.Models;
-
-namespace FootballClient.Models
+﻿namespace FootballClient.Models
 {
     public class Invite
     {
@@ -9,9 +7,9 @@ namespace FootballClient.Models
         public readonly Player Receiver;
         public readonly System.DateTime CreateTime;
 
-        public Invite(Player sender, Player receiver)
+        public Invite(string token, Player sender, Player receiver)
         {
-            Token = System.Guid.NewGuid().ToString();
+            Token = token;
             Sender = sender;
             Receiver = receiver;
             CreateTime = System.DateTime.Now;
