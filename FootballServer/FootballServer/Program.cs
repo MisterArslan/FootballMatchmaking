@@ -48,6 +48,7 @@ namespace FootballServer
                                 ((int)MessageType.RECEIVE_INVITE, receiver, invite));
                             Log.Info("[Server] Invite from " +
                             player.Token + " to " + request.Value + " created");
+                            Log.Info("[InviteList] Current count = " + _invites.Count);
                         }
                         else
                         {
@@ -79,6 +80,7 @@ namespace FootballServer
                             _invites.TryRemove(request.Value, out invite);
                             Log.Info("[Server] Invite from " +
                                 player.Token + " to " + request.Value + " accepted");
+                            Log.Info("[InviteList] Current count = " + _invites.Count);
                         }
                         else
                         {
@@ -99,6 +101,7 @@ namespace FootballServer
                     player.Token = request.Player.Token;
                     try
                     {
+                        Log.Info("[InviteList] Current count = " + _invites.Count);
                         if (_invites.ContainsKey(request.Value))
                         {
                             var invite = _invites[request.Value];
@@ -106,6 +109,7 @@ namespace FootballServer
                             _invites.TryRemove(request.Value, out invite);
                             Log.Info("[Server] Invite from " +
                                 player.Token + " to " + request.Value + " declined");
+                            Log.Info("[InviteList] Current count = " + _invites.Count);
                         }
                         else
                         {
@@ -126,12 +130,14 @@ namespace FootballServer
                     player.Token = request.Player.Token;
                     try
                     {
+                        Log.Info("[InviteList] Current count = " + _invites.Count);
                         if (_invites.ContainsKey(request.Value))
                         {
                             var invite = _invites[request.Value];
                             CancelInvite(ref server, invite);
                             Log.Info("[Server] Invite from " +
                                 player.Token + " to " + request.Value + " canceled");
+                            Log.Info("[InviteList] Current count = " + _invites.Count);
                         }
                         else
                         {
