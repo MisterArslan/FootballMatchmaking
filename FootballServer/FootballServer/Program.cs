@@ -102,6 +102,8 @@ namespace FootballServer
                     try
                     {
                         Log.Info("[InviteList] Current count = " + _invites.Count);
+                        Log.Info(_invites.First().Key);
+                        Log.Info(request.Value);
                         if (_invites.ContainsKey(request.Value))
                         {
                             var invite = _invites[request.Value];
