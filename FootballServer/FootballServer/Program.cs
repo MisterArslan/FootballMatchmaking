@@ -46,7 +46,7 @@ namespace FootballServer
                                 ((int)MessageType.CREATE_INVITE, player, invite));
                             server.Send(new ValueResult<Invite>
                                 ((int)MessageType.RECEIVE_INVITE, receiver, invite));
-                            Log.Info("[Server] Invite from " +
+                            Log.Info("[Server] Invite " + invite.Token + " from " +
                             player.Token + " to " + request.Value + " created");
                         }
                         else

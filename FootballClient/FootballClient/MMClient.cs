@@ -27,15 +27,13 @@ namespace FootballClient
                 (msg) => 
                 {
                     var result = msg.ToObject<ValueResult<Invite>>();
-                    Console.WriteLine(result.Value.Token);
-                    //OnInviteCreated(result.Value);
+                    OnInviteCreated(result.Value);
                 });
             AddHandler((int)MessageType.RECEIVE_INVITE,
                 (msg) =>
                 {
                     var result = msg.ToObject<ValueResult<Invite>>();
-                    //OnInviteRecieved(result.Value);
-                    Console.WriteLine(result.Value.Token);
+                    OnInviteRecieved(result.Value);
                 });
             AddHandler((int)MessageType.ACCEPT_INVITE,
                 (msg) => 
