@@ -219,29 +219,10 @@ namespace FootballServer
         {
             try
             {
-                if (_tcpClient != null && _tcpClient.Client != null && _tcpClient.Client.Connected)
-                {
-                    // Detect if client disconnected
-                    if (_tcpClient.Client.Poll(0, SelectMode.SelectRead))
-                    {
-                        byte[] buff = new byte[1];
-                        if (_tcpClient.Client.Receive(buff, SocketFlags.Peek) == 0)
-                        {
-                            // Client disconnected
-                            return false;
-                        }
-                        else
-                        {
-                            return true;
-                        }
-                    }
-
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                byte[] buff = new byte[1];   
+                return _tcpClient != null && _tcpClient.Client != null && _tcpClient.Client.Connected 
+                            // Detect if client IsConnected                         Client not disconnected
+                            && (!_tcpClient.Client.Poll(0, SelectMode.SelectRead) || _tcpClient.Client.Receive(buff, SocketFlags.Peek) != 0);
             }
             catch
             {
